@@ -23,12 +23,12 @@ const ToastDemo = () => {
 
   const simulateAsyncOperation = () => {
     setLoading(true);
-    
+
     // Simulate an API call with promise
     const fakeApiCall = new Promise<string>((resolve, reject) => {
       // 70% chance of success
       const willSucceed = Math.random() > 0.3;
-      
+
       setTimeout(() => {
         if (willSucceed) {
           resolve('Data fetched successfully!');
@@ -37,16 +37,13 @@ const ToastDemo = () => {
         }
       }, 2000);
     });
-    
-    toast.promise(
-      fakeApiCall,
-      {
-        pending: 'Fetching data...',
-        success: 'Data loaded successfully!',
-        error: 'Failed to fetch data! Please try again.'
-      }
-    );
-    
+
+    toast.promise(fakeApiCall, {
+      pending: 'Fetching data...',
+      success: 'Data loaded successfully!',
+      error: 'Failed to fetch data! Please try again.',
+    });
+
     fakeApiCall
       .catch(() => {}) // Already handled by toast.promise
       .finally(() => setLoading(false));
@@ -55,44 +52,44 @@ const ToastDemo = () => {
   return (
     <div className="w-full max-w-2xl mx-auto bg-white rounded-lg shadow-md p-6 mt-8">
       <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">Toast Notification Demo</h2>
-      
+
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-        <button 
+        <button
           onClick={showSuccessToast}
           className="bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition duration-300"
         >
           Success Toast
         </button>
-        
-        <button 
+
+        <button
           onClick={showErrorToast}
           className="bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 transition duration-300"
         >
           Error Toast
         </button>
-        
-        <button 
+
+        <button
           onClick={showInfoToast}
           className="bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-300"
         >
           Info Toast
         </button>
-        
-        <button 
+
+        <button
           onClick={showWarningToast}
           className="bg-yellow-600 text-white py-2 px-4 rounded-md hover:bg-yellow-700 transition duration-300"
         >
           Warning Toast
         </button>
       </div>
-      
+
       <div className="border-t pt-4">
-        <button 
+        <button
           onClick={simulateAsyncOperation}
           disabled={loading}
           className={`w-full py-3 px-4 rounded-md transition duration-300 ${
-            loading 
-              ? 'bg-gray-400 cursor-not-allowed' 
+            loading
+              ? 'bg-gray-400 cursor-not-allowed'
               : 'bg-purple-600 text-white hover:bg-purple-700'
           }`}
         >
@@ -106,4 +103,4 @@ const ToastDemo = () => {
   );
 };
 
-export default ToastDemo; 
+export default ToastDemo;

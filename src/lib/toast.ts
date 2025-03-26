@@ -29,7 +29,11 @@ export const toastWarning = (message: string, options?: ToastOptions) => {
 };
 
 // Generic toast function
-export const showToast = (message: string, type: 'success' | 'error' | 'info' | 'warning' = 'info', options?: ToastOptions) => {
+export const showToast = (
+  message: string,
+  type: 'success' | 'error' | 'info' | 'warning' = 'info',
+  options?: ToastOptions
+) => {
   switch (type) {
     case 'success':
       return toastSuccess(message, options);
@@ -49,4 +53,4 @@ export default {
   info: toastInfo,
   warning: toastWarning,
   show: showToast,
-}; 
+};

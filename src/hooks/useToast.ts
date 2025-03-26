@@ -36,7 +36,11 @@ export const useToast = () => {
   const promise = useCallback(
     <T>(
       promise: Promise<T>,
-      { pending = 'Loading...', success = 'Success!', error = 'Error!' }: { pending?: string; success?: string; error?: string },
+      {
+        pending = 'Loading...',
+        success = 'Success!',
+        error = 'Error!',
+      }: { pending?: string; success?: string; error?: string },
       options?: ToastOptions
     ) => {
       return toast.promise(promise, { pending, success, error }, { ...defaultOptions, ...options });
@@ -53,4 +57,4 @@ export const useToast = () => {
   };
 };
 
-export default useToast; 
+export default useToast;
